@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netpurity"
+dynamic = ["version"]
+description = "Local DNS traffic monitor that detects anomalous domains and alerts a Discord webhook."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+    "scapy>=2.5.0",
+    "requests>=2.28.0",
+    "typer>=0.16.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.scripts]
+netpurity = "netpurity.main:app"
+
+[tool.setuptools]
+packages = ["netpurity"]
+
+[tool.setuptools.dynamic]
+version = { attr = "netpurity.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,2 @@
+[console_scripts]
+netpurity = netpurity.main:app
